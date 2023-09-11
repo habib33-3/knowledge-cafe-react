@@ -10,6 +10,7 @@ const Blog = ({ blog, handleAddToBookMark, handleMarkAsRead }) => {
     author,
     hashtags,
     posted_date,
+    id,
   } = blog;
 
   return (
@@ -60,7 +61,7 @@ const Blog = ({ blog, handleAddToBookMark, handleMarkAsRead }) => {
         </p>
         <button
           className="mt-4 text-purple-600 font-bold underline "
-          onClick={() => handleMarkAsRead(reading_time)}
+          onClick={() => handleMarkAsRead(id, reading_time)}
         >
           Mark As Read
         </button>

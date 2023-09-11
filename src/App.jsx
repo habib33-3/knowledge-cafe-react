@@ -8,9 +8,13 @@ function App() {
   const [bookMarks, setBookMarks] = useState([]);
   const [readingTime, setReadingTime] = useState(0);
 
-  const handleMarkAsRead = (time) => {
+  const handleMarkAsRead = (id, time) => {
     setReadingTime(readingTime + time);
-    console.log(readingTime);
+
+    const remainingBookmarks = bookMarks.filter(
+      (bookMark) => bookMark.id !== id
+    );
+    setBookMarks(remainingBookmarks);
   };
 
   const handleAddToBookMark = (blog) => {
@@ -21,7 +25,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <div className="md:flex max-w-7xl mx-auto gap-4">
+      <div className="gap-4 mx-auto md:flex max-w-7xl">
         <Blogs
           handleAddToBookMark={handleAddToBookMark}
           handleMarkAsRead={handleMarkAsRead}
