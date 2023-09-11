@@ -5,18 +5,19 @@ import BookMarks from "./components/BookMarks/BookMarks";
 import { useState } from "react";
 
 function App() {
-  const [bookMark, setBookMark] = useState([]);
+  const [bookMarks, setBookMarks] = useState([]);
 
   const handleAddToBookMark = (blog) => {
-    console.log("bookamrk added");
+    const newBookMarks = [...bookMarks, blog];
+    setBookMarks(newBookMarks);
   };
 
   return (
     <>
       <Header></Header>
-      <div className="md:flex max-w-7xl mx-auto">
+      <div className="md:flex max-w-7xl mx-auto gap-4">
         <Blogs handleAddToBookMark={handleAddToBookMark}></Blogs>
-        <BookMarks></BookMarks>
+        <BookMarks bookMarks={bookMarks}></BookMarks>
       </div>
     </>
   );
